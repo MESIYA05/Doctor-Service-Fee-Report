@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medi_Elves_Fee_Calculation_Report1</title>
+<script src="https://js.zohostatic.com/creator/widgets/version/2.0/widgetsdk-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+<link rel="stylesheet" href="./Style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="brand">
+      <img id="brandLogo" class="brand-logo" alt="Medi Elves" style="display:none">
+      <div id="brandText" class="brand-text">Medi Elves<small>Keep it simple</small></div>
+    </div>
+    <h1>Medi Elves Fee Calculation Report</h1>
+  </div>
+
+  <div class="card filters">
+    <div class="field"><label for="fDoctor">Doctor</label>
+      <select id="fDoctor"><option value="">All Doctors</option></select></div>
+    <div class="field"><label for="fHospital">Hospital</label>
+      <select id="fHospital"><option value="">All Hospitals</option></select></div>
+    <div class="field"><label for="fFrom">From Date</label><input type="date" id="fFrom"></div>
+    <div class="field"><label for="fTo">To Date</label><input type="date" id="fTo"></div>
+    <div class="actions">
+      <button class="btn" id="btnUpdate" type="button">Update</button>
+      <button class="btn btn-clear" id="btnClear" type="button">Reset</button>
+      <button class="btn btn-pdf" id="btnPdf" type="button">Download PDF</button>
+      <button class="btn btn-excel" id="btnExcel" type="button">Export Excel</button>
+    </div>
+  </div>
+
+  <div class="error" id="errorBox"></div>
+  <div class="notice" id="noticeBox"></div>
+
+  <div class="card">
+    <div class="card-head">
+      <h2>Medi Elves Fee Calculation Report</h2>
+      <span class="count" id="recCount">Loading...</span>
+    </div>
+    <div class="table-scroll">
+      <table class="main-table">
+        <colgroup>
+          <col style="width:6%">
+          <col style="width:13.4%"><col style="width:13.4%"><col style="width:13.4%">
+          <col style="width:13.4%"><col style="width:13.4%"><col style="width:13.4%"><col style="width:13.6%">
+        </colgroup>
+        <thead><tr>
+          <th>#</th><th>Doctor</th><th>Hospital</th><th>Payment Date</th>
+          <th>Payment Amount</th><th>Doctor Billing %</th><th>Service Fee</th><th>Status</th>
+        </tr></thead>
+        <tbody id="reportBody"><tr><td colspan="8" class="empty">Loading...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card summary">
+    <h2>Grand Summary</h2>
+    <div class="cards">
+      <div class="stat"><span>Total Record Count</span><b id="sCount">0</b></div>
+      <div class="stat"><span>Total Payment Amount</span><b id="sPaid">0.00</b></div>
+      <div class="stat"><span>Total Fees</span><b id="sFees">0.00</b></div>
+    </div>
+    <div class="table-scroll status-wrap">
+      <table>
+        <thead><tr><th>Status</th><th>Count</th><th>Payment Amount</th></tr></thead>
+        <tbody id="statusBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="loader" id="loader"><div class="spinner"></div></div>
+<script src="logo.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
